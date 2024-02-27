@@ -1,5 +1,3 @@
-import { SafeResourceUrl } from "@angular/platform-browser";
-
 export interface RespostaAPI<T>{
   count: number;
   next: string;
@@ -37,8 +35,8 @@ export interface Nave {
   MGLT: string;
   cargo_capacity: string;
   consumables: string;
-  films: string;
-  pilots: string;
+  films: string[];
+  pilots: string[];
   url: string;
   created: string;
   edited: string

@@ -1,7 +1,6 @@
 import { SwapiService } from 'src/app/services/swapi.service';
 import { Component, OnInit } from '@angular/core';
 import { Nave } from 'src/app/shared/models/interface';
-import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-starships',
@@ -14,26 +13,18 @@ export class StarshipsComponent implements OnInit{
   colunas: string[] = ['name', 'model', 'manufacturer', 'hyperdrive_rating'];
   showSpinner = false;
 
-  totalStarships!: number;
-  paginaAtual = 1;
 
   constructor(private swapiService: SwapiService) {}
   ngOnInit(){
       this.getStarShips();
   }
 
-  getStarShips(page = 1) {
+  getStarShips() {
     this.showSpinner = true;
-    this.swapiService.getStarships(page).subscribe((res)=>{
-      this.totalStarships = res.count;
-      console.log(this.totalStarships);
-
+    this.swapiService.getStarships().subscribe((res)=>{
       this.resultStarships = res.results;
       this.showSpinner = false;
     });
   }
-  changePagination(e: PageEvent) {
-    this.paginaAtual = e.pageIndex + 1;
-    this.getStarShips(this.paginaAtual);
-  }
+
 }

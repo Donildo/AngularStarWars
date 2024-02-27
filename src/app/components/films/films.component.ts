@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { SwapiService } from 'src/app/services/swapi.service';
+import { Filme } from 'src/app/shared/models/interface';
 
 @Component({
   selector: 'app-films',
@@ -8,22 +10,30 @@ import { HttpClient } from '@angular/common/http'
 })
 export class FilmsComponent implements OnInit {
   constructor(
-    private http: HttpClient
+    private swapiService: SwapiService
   ) {}
 
-  urlJSONFilms ='assets/films.json';
-  resultFilms: any;
-  colunas: string[] = ['title', 'director', 'producer', 'release_date']
+  resultsFilms: Filme[] = [];
+  colunas: string[] = ['title', 'director', 'producer', 'release_date'];
+  filterTitle = '';
+  showSpinner = false;
 
-  getFilmes(){
-    this.http.get<any>(this.urlJSONFilms).subscribe((res)=>{
-      this.resultFilms = res.results;
-      console.log(this.resultFilms)
-    });
+
+  getFilms(filterTitle?: string){
+    this.showSpinner = true
+    this.swapiService.getFilms(filterTitle).subscribe(
+     res => {
+      this.resultsFilms = res.results;
+      this.showSpinner = false;
+     }
+    )
   }
 
   ngOnInit(): void {
-    this.getFilmes()
+    this.getFilms()
+  }
+  filtrarPorTitulo(){
+    this.getFilms(this.filterTitle);
   }
   formtarData(data: string) {
     const dataObj = new Date(data);
