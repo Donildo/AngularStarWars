@@ -11,13 +11,13 @@
         <td mat-cell *matCellDef="let element">{{ element.model }}</td>
       </ng-container>
       <ng-container matColumnDef="manufacturer">
-        <th mat-header-cell *matHeaderCellDef="">Fabricante</th>
-        <td mat-cell ></td>
+        <th mat-header-cell *matHeaderCellDef>Fabricante</th>
+        <td mat-cell *matCellDef="let element">{{ element.manufacturer }}</td>
       </ng-container>
-      <ng-container matColumnDef="manufacturer">
-        <th mat-header-cell *matHeaderCellDef="">Hyperdrive</th>
+      <ng-container matColumnDef="hyperdrive_rating">
+        <th mat-header-cell *matHeaderCellDef>Hyperdrive</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.hyperdrive.rating }}
+          {{ element.hyperdrive_rating }}
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="colunas"></tr>

@@ -21,10 +21,9 @@ export class StarshipsComponent implements OnInit{
 
   getStarShips() {
     this.showSpinner = true;
-    this.swapiService.getStarships().subscribe((res)=>{
+    this.swapiService.getStarships().subscribe((res) => {
       this.resultStarships = res.results;
       this.showSpinner = false;
     });
   }
-
 }

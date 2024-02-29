@@ -21,8 +21,8 @@ export class SwapiService {
        .get<RespostaAPI<Filme>>(url);
   }
 
-  getStarships(pages:number){
-    const url = `${this.api_url}/starships/?page=${pages}`;
+  getStarships(){
+    const url = `${this.api_url}/starships`;
     return this.http.get<RespostaAPI<Nave>>(url);
   }
 }
