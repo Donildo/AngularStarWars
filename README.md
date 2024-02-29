@@ -28,7 +28,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Angular Star Wars, reedme em construção
 
-Pagina sobre filmes
-![alt text](<Captura de Tela (226).png>) 
 Pagina sobre Naves
+![alt text](<Captura de Tela (226).png>) 
+
+Pagina sobre Filmes
 ![alt text](<Captura de Tela (225).png>)
